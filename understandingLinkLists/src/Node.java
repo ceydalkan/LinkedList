@@ -60,6 +60,5 @@ public class Node {
     public int getItemCount(){
         return itemCount;
     }
+}
 
-}
-}
