@@ -87,8 +87,5 @@ public class LinkedList {
     public boolean contains(String itemName){
         return (findItem(itemName) != null);
     }
-
-
 }
 
-}
