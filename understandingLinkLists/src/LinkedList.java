@@ -1,8 +1,10 @@
 public class LinkedList {
     private Node head;
+    private Node tail;
 
     public LinkedList(){
         head = null;
+        tail = null;
     }
 
     public boolean isEmpty(){
@@ -23,23 +25,33 @@ public class LinkedList {
     }
 
     public void addToStart(String newItem, int newCount){
-        Node addedNode = new Node(newItem, newCount, head);
-        head = addedNode;
-        addedNode.setItemNumber(1);
-        Node position = head.getLink();
-
-        while(position.getLink() != null){
-                position.increaseItemNumber(1);
-                position = position.getLink();
+        if(head != null){
+            Node addedNode = new Node(newItem, newCount, head);
+            head = addedNode;
+            addedNode.setItemNumber(1);
+            Node position = head.getLink();
+    
+            while(position.getLink() != null){
+                    position.increaseItemNumber(1);
+                    position = position.getLink();
+            }
+        }
+            
+        else{
+            Node addedNode = new Node(newItem, newCount, head);
+            head = tail = addedNode;
+            addedNode.setItemNumber(1);
         }
     }
 
-    public void addToEndWithoutTail(String newItem, int newCount){
+
+
+    public void addToEnd(String newItem, int newCount){
         Node addedNode = new Node(newItem, newCount, null);
         Node position = head;
 
         if(position == null)
-            head = addedNode;
+            head = tail = addedNode;
         
         else{
 
@@ -48,7 +60,7 @@ public class LinkedList {
             }
 
             position.setLink(addedNode);
-            position = addedNode;
+            tail = addedNode;
         }
     }
 
